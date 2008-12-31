@@ -14,7 +14,7 @@ module DataMapper
             :order => [:id.desc]
           })
           
-          page_count = (count(options).to_f / per_page).ceil
+          page_count = (count(options.except(:order)).to_f / per_page).ceil
           
           options.merge!({
             :limit => per_page, 
